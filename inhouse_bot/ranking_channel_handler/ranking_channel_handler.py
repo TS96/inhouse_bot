@@ -108,7 +108,7 @@ class RankingChannelHandler:
                 .join(Game)
                 .filter(Player.server_id == server_id)
                 .filter(Game.winner != None)    # No currently running game
-                .group_by(Player, PlayerRating)
+                .group_by(Player, PlayerRating, PlayerRating.player_server_id)
                 .order_by(PlayerRating.mmr.desc())
             )
 
